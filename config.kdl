@@ -1,0 +1,372 @@
+//=== Startup
+
+//spawn-at-startup "xwayland-satellite"
+//spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+//spawn-at-startup "hyprpaper"
+//spawn-at-startup "nm-applet"
+//spawn-at-startup "udiskie -t"
+spawn-at-startup "~/.config/niri/scripts/wallpaper.sh"
+
+//=== output
+output "eDP-1" {
+	//off
+    mode "1366x768@59.97300"
+    //position x=2560 y=0
+    position x=0 y=0
+    //position x=800 y=0
+    background-color "#000000"
+}
+
+output "HDMI-A-1" {
+    //off
+    //mode "2560x1080@59.978"
+    mode "2560x1080@100.00"
+    //mode "1920x1080"
+    //mode "800x600"
+    //position x=0 y=0
+    position x=1366 y=0
+    background-color "#000000"
+}
+
+
+//=== input 
+input {
+	keyboard {
+		xkb {
+		    layout "us"
+		}
+        numlock
+	}
+	touchpad {
+		tap
+		dwt
+	}
+	//focus-follows-mouse
+}
+
+gestures {
+    dnd-edge-view-scroll {
+        trigger-width 100
+       // delay-ms 100
+        max-speed 3000
+    }
+}
+
+//=== environment
+environment {
+	XDG_CURRENT_DESKTOP "Niri"
+	XDG_SESSION_TYPE "wayland"
+	XDG_SESSION_DESKTOP "niri"
+	//GTK_IM_MODULE "wayland"
+	QT_AUTO_SCREEN_SCALE_FACTOR "1"
+	QT_QPA_PLATFORM "wayland;xcb"
+	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+	QT_QPA_PLATFORMTHEME "qt5ct"
+	MOZ_ENABLE_WAYLAND "1"
+	DISPLAY ":0"
+}
+
+//=== layout
+prefer-no-csd
+
+layout {
+	gaps 5
+    //empty-workspace-above-first
+    //default-column-display "tabbed"
+    struts {
+        left 10
+        right 10
+        top 0
+        bottom 0
+    }
+	center-focused-column "never"
+    //always-center-single-column
+	focus-ring {
+		off
+        width 1
+        active-color "#bd93f9"
+        inactive-color "#44475a"
+	}
+
+	border {
+		//off
+		width 2
+		active-color "#bd93f9"
+		inactive-color "#1e1f29"
+	}
+	
+    shadow {
+        //off
+        softness 10
+        spread 3
+        offset x=0 y=0
+        draw-behind-window true
+    }
+    
+    /-preset-column-widths {
+        proportion 0.3333333333333333
+        proportion 0.5
+        proportion 0.66667
+        // proportion 0.25
+        // fixed 1000
+    }
+
+    //default-column-width { proportion 0.5; }
+
+   /-preset-window-heights {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+    
+	tab-indicator {
+		width 5
+		gap 5
+		length total-proportion=0.5
+		position "left"
+		place-within-column
+		corner-radius 3
+		gaps-between-tabs 2
+		active-color "#50fa7b"
+		inactive-color "#44475a"
+	}
+	
+    /-insert-hint {
+        // off
+        color "#ffc87f80"
+        // gradient from="#ffbb6680" to="#ffc88080" angle=45 relative-to="workspace-view"
+    }
+}
+
+hotkey-overlay {
+	skip-at-startup
+}
+
+animations {
+    // off
+    slowdown 1.7
+    window-open {
+        duration-ms 300
+        curve "ease-out-cubic"
+    }
+    window-close {
+        duration-ms 300
+        curve "ease-out-cubic"
+    }
+    horizontal-view-movement {
+        spring damping-ratio=0.5 stiffness=700 epsilon=0.0001
+    }
+    window-movement {
+        spring damping-ratio=0.5 stiffness=700 epsilon=0.0001
+    }
+    window-resize {
+        spring damping-ratio=0.5 stiffness=700 epsilon=0.0001
+    }
+    workspace-switch {
+        spring damping-ratio=0.5 stiffness=700 epsilon=0.0001
+    }
+    config-notification-open-close {
+        spring damping-ratio=0.5 stiffness=700 epsilon=0.001
+    }
+}
+
+cursor {
+  xcursor-theme "Adwaita"
+  xcursor-size 24
+}
+
+//=== application binding
+
+binds {
+	Mod+Return {spawn "kitty";}
+	Mod+Shift+Return {spawn "kitty" "-T" "kitty-float";}
+	
+	Mod+Shift+B {spawn "waybar" "--config" "/home/ipws/.config/niri/waybar/config.jsonc" "--style" "/home/ipws/.config/niri/waybar/style.css";}
+	Mod+Shift+W {spawn "/home/ipws/.config/niri/scripts/wallpaper.sh";}
+	Mod+Ctrl+V { spawn "pavucontrol"; }
+	Ctrl+Alt+L { spawn "swaylock" "-c" "282a39";}
+	Ctrl+Alt+M { spawn "/home/ipws/.config/niri/scripts/volume" "--toggle"; }
+	
+
+	Mod+F1 { spawn "firefox";}
+	Mod+Shift+F1 { spawn "firefox" "--private-window";}
+	Mod+F2 { spawn "kitty" "-e" "yazi";}
+	Mod+F3 { spawn "nautilus";}
+	Mod+F4 { spawn "gimp"; }
+	Mod+F5 { spawn "inkscape"; }
+	
+	Mod+F10 { spawn "/home/ipws/.config/niri/scripts/volume" "--dec"; }
+	Mod+F11 { spawn "/home/ipws/.config/niri/scripts/volume" "--inc"; }
+	
+	//Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+	//Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
+
+	Mod+M { maximize-column; }
+	Mod+F { fullscreen-window; }
+	//Mod+Shift+F { expand-column-to-available-width; }
+	Mod+Q { close-window; }
+	Mod+C { center-column; }
+	
+	Print { screenshot-screen; }
+	Ctrl+Alt+P { screenshot-screen; }
+    Ctrl+Print { screenshot; }
+    Alt+Print { screenshot-window; }
+    
+    Alt+Tab { switch-focus-between-floating-and-tiling; }
+    Mod+Space { toggle-window-floating; }
+    
+	Mod+D { spawn "rofi" "-show" "drun" "-theme" "/home/ipws/.config/rofi/style.rasi"; }
+	Mod+B { spawn "/home/ipws/.config/rofi/bookmark"; }
+	Mod+Z { spawn "dunstctl" "close"; }
+	Mod+G { spawn "galculator"; }
+	Mod+Shift+G { spawn "qalculate-gtk"; }
+	Mod+Shift+V { spawn "VBoxManage" "startvm" "XP"; }	
+	Mod+Shift+E { quit; }
+	Mod+X { spawn "/home/ipws/.config/rofi/rofi-power"; }
+	
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    //Mod+6 { focus-workspace 6; }
+    //Mod+7 { focus-workspace 7; }
+    //Mod+8 { focus-workspace 8; }
+    //Mod+9 { focus-workspace 9; }
+
+    Mod+Shift+1 { move-window-to-workspace 1; }
+    Mod+Shift+2 { move-window-to-workspace 2; }
+    Mod+Shift+3 { move-window-to-workspace 3; }
+    Mod+Shift+4 { move-window-to-workspace 4; }
+    Mod+Shift+5 { move-window-to-workspace 5; }
+    //Mod+Shift+6 { move-window-to-workspace 6; }
+    //Mod+Shift+7 { move-window-to-workspace 7; }
+    //Mod+Shift+8 { move-window-to-workspace 8; }
+    //Mod+Shift+9 { move-window-to-workspace 9; }
+    
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    //Mod+Ctrl+6 { move-column-to-workspace 6; }
+    //Mod+Ctrl+7 { move-column-to-workspace 7; }
+    //Mod+Ctrl+8 { move-column-to-workspace 8; }
+    //Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+    //Mod+Comma  { consume-window-into-column; }
+    //Mod+Period { expel-window-from-column; }
+
+	Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+    
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Ctrl+Minus { set-column-width "-1"; }
+    Mod+Ctrl+Equal { set-column-width "+1"; }
+
+    Mod+Shift+Minus      { set-window-height "-10%"; }
+    Mod+Shift+Equal      { set-window-height "+10%"; }
+    Mod+Shift+Ctrl+Minus { set-window-height "-1"; }
+    Mod+Shift+Ctrl+Equal { set-window-height "+1"; }
+
+    Mod+Ctrl+Left  { move-column-left; }
+    //Mod+Shift+Down  { move-window-down; }
+    //Mod+Shift+Up    { move-window-up; }
+    Mod+Ctrl+Right { move-column-right; }
+
+    Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-window-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-window-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-window-to-monitor-right; }
+	
+	Mod+Left  { focus-column-left; }
+    Mod+Down  { focus-window-down; }
+    Mod+Up    { focus-window-up; }
+    Mod+Right { focus-column-right; }
+	
+	Mod+Shift+WheelScrollUp		   cooldown-ms=150 { focus-monitor-left; }
+	Mod+Shift+WheelScrollDown      cooldown-ms=150 { focus-monitor-right; }
+	Mod+Shift+Left  { focus-monitor-left; }
+	Mod+Shift+Right { focus-monitor-right; }
+	//Mod+Shift+Down  { focus-monitor-down; }
+	//Mod+Shift+Up    { focus-monitor-up; }
+	
+	//Mod+Ctrl+Left { focus-monitor-left; }
+    //Mod+Ctrl+Right { focus-monitor-right; }
+    //Mod+Ctrl+Down  { focus-monitor-down; }
+    //Mod+Ctrl+Up    { focus-monitor-up; }
+    
+	Mod+Page_Down { move-column-to-workspace-down; }
+    Mod+Page_Up   { move-column-to-workspace-up; }
+
+	Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+    
+	Mod+WheelScrollDown      cooldown-ms=150 { focus-column-right; }
+	//Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-column-left; }
+    //Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    //Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    //Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
+    
+	Mod+Tab { focus-window-previous; }
+	
+	Mod+W { toggle-column-tabbed-display; }
+
+}
+
+
+window-rule {
+	geometry-corner-radius 0 0 0 0
+	clip-to-geometry true
+	//tab-indicator {
+	//    active-color "#bd93f9"
+	//    inactive-color "#44475a"
+	//}
+}
+
+window-rule {
+    match title="Firefox"
+    match title="GNU Image Manipulation Program"
+    open-maximized true
+}
+
+window-rule {
+    match title="kitty-float"
+    open-floating true
+//    min-width 600
+//    max-width 1000
+//    min-height 150
+//    max-height 300
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.5; }
+}
+
+window-rule {
+     match app-id="firefox$" title="^Picture-in-Picture$"
+     match app-id="^mpv$"
+     match app-id="^galculator$"
+     match app-id="^qalculate-gtk$"
+     match title="File Operation Progress"
+     match title="Volume Control"
+     open-floating true
+}
+
+window-rule {
+	match app-id="org.gnome.Nautilus$"
+	default-column-width { proportion 0.75; }
+}
+
+/-window-rule {
+     match app-id="kitty"
+     default-column-width {}
+}
