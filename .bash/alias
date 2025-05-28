@@ -1,0 +1,41 @@
+source ~/.bash/functions
+
+## list ##
+#alias ls='lsd -al'
+#alias la='lsd -a'
+#alias ll='lsd -l'
+
+# extract files
+alias ex='ex'
+
+# other
+alias src='source ~/.bashrc' #source .bashrc
+alias clr='clear'   #clear
+alias v='vim'
+
+# change directory & directory related
+alias cD='cd ~/Downloads'
+alias cP='cd ~/Pictures'
+alias cV='cd ~/Videos'
+
+alias cd='cd_to_directory'
+alias md='mkdir'    #make directory
+alias tc='touch'    #creat file
+
+alias r='fn_removal' #remove both file & direvtory ( one file / directory at a time )
+
+# updates
+alias update='sudo pacman -Syu'
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
+
+
+# make executable script
+alias exe='chmod +x'
+
+alias sda1='udisksctl mount -b /dev/sda1'
+alias sda2='udisksctl mount -b /dev/sda2'
+
+alias fzf='fzf --height 40% --reverse --border sharp'
+
+alias hyp='kitty -e vim ~/.config/hypr/hyprland.conf'
+alias mon='kitty -e vim ~/.config/hypr/monitor.conf'

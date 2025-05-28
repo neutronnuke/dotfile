@@ -1,0 +1,67 @@
+* {
+    /* Theme settings */
+    highlight: bold italic;
+    scrollbar: false;
+	font: "JetBrainsMono Nerd Font Regular 10";
+}    
+
+window {
+    border:           2;
+    padding:          2;
+	width: 400;
+}
+
+mainbox {
+    border:  0;
+    padding: 0;
+}
+
+message {
+    border:       2px 0 0;
+    padding:      1px;
+}
+
+
+listview {
+    border:       2px solid 0 0;
+    padding:      2px 0 0;
+    spacing:      2px;
+}
+
+element {
+    border:  0;
+    padding: 2px;
+}
+
+
+scrollbar {
+    width:        4px;
+    border:       0;
+    handle-width: 8px;
+    padding:      0;
+}
+
+mode-switcher {
+    border:       2px 0 0;
+}
+
+inputbar {
+    spacing:    0;
+    padding:    2px;
+    children:   [ prompt, textbox-prompt-sep, entry, case-indicator ];
+}
+
+case-indicator,
+entry,
+prompt,
+button {
+    spacing:    0;
+}
+
+
+textbox-prompt-sep {
+    expand:     false;
+    str:        ":";
+    margin:     0 0.3em 0 0;
+}
+

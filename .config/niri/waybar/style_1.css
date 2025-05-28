@@ -1,0 +1,230 @@
+@import "dracula.css";
+* {
+    border: none;
+    border-radius: 0;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 10px;
+	font-weight: bolder;
+    margin: 0px;
+    padding:0px;
+    transition-property: background-color;
+    transition: 0.0s;
+}
+
+window#waybar {
+    background: @purple;
+    border-radius: 0px 0px 0px 0px;
+}
+
+window#waybar.empty {
+    background: @base-darker;
+
+}
+
+tooltip {
+	background: @base-darker;
+  	border-width: 1px;
+	border-color: @purple;
+	border-style: solid;
+ 	border-radius: 3px;
+}
+
+
+#workspaces{
+    margin-left: 0px;
+}
+
+#workspaces button {
+    color: @comment;
+    background:@base-darker;
+	/*padding-left: 2px;
+	padding-right: 2px;
+    border-radius: 0px;*/
+    transition: color 200ms ease-in-out;
+}
+
+#workspaces button:hover {
+    color: @orange;
+    transition-property: background;
+    transition-duration: .5s;
+}
+
+#workspaces button.empty {
+    color: @selection;
+    transition: 0.3s;
+}
+
+#workspaces button.visible {
+    color: @pink;
+    background-color: transparent;
+    transition: 0.3s;
+}
+
+#workspaces button.active {
+    color: @foreground;
+    background-color: @purple;
+    transition-property: background;
+    transition-duration: .5s;
+}
+
+#workspaces button.focused {
+    color: @base;
+    background-color: @purple;
+    padding: 0px 5px;
+    transition-property: background;
+    transition-duration: .5s;
+}
+
+#workspaces button.urgent {
+    color: @red;
+    background-color: @transparent;
+    transition: 0.3s;
+}
+
+#clock {
+    background: @base-darker;
+    color: @yellow;
+}
+
+@keyframes blink-on {
+    0% {
+        color: @foreground;
+        background-color:@base-darker;
+    }
+    to {
+        color: @green;
+        background-color: @base-darker;
+    }
+}
+
+@keyframes blink-warn {
+    20% {
+        color: @orange;
+        background-color: @base-darker;
+    }
+    to {
+        color: @foreground;
+        background-color: @base-darker;
+    }
+}
+
+@keyframes blink {
+    10% {
+        color: @red;
+        background-color:@base-darker;
+    }
+    to {
+        color: @foreground;
+        background-color:@base-darker;
+    }
+}
+
+#battery {
+    background: @base-darker;
+    color: @pink;
+    transition: 0.3s;
+}
+
+#battery.charging {
+    background: transparent;
+    animation-name: blink-on;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    transition: 0.3s;
+}
+
+#battery.warning:not(.charging) {
+    color: @yellow;
+    animation-name: blink-warn;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.critical:not(.charging) {
+  	color: @red;
+  	animation-name: blink;
+  	animation-duration: 0.5s;
+  	animation-timing-function: linear;
+  	animation-iteration-count: infinite;
+  	animation-direction: alternate;
+}
+
+#cpu{
+    background: transparent;
+    color: @cyan;
+}
+
+#tray {
+    background: @base-darker;
+}
+
+#tray menu {
+    color: @foreground;
+    background: @base-darker;
+    padding: 0px;
+    transition: 0.3s;
+}
+
+#window {
+	color: @base;
+	margin-left: 10px;
+	margin-right: 5px;
+    transition: 0.3s;
+}
+
+#/* make window module transparent when no windows present */
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+#pulseaudio {
+	color: @orange;
+    background: @base-darker;
+}
+
+#pulseaudio.muted {
+	color: @red;
+    background: @base-darker;
+}
+
+#memory {
+	color: @green;
+}
+
+#keyboard-state {
+  	color: @red;
+    background:@base-darker;
+}
+
+#keyboard-state > label.locked {
+  	color: @green;
+}
+
+#network {
+    color: @purple;
+    background:@base-darker;
+}
+
+#custom-sep {
+    color: @base-darker;
+    background: @base-darker;
+}
+
+#taskbar {
+    background-color: @base-darker;
+}
+#taskbar button {
+    background-color: @base-darker;
+    padding-left:5px;
+}
+#taskbar button.active {
+    background-color: @purple;
+} 
+
+#taskbar button:hover{
+    background-color: @base-darker;
+}

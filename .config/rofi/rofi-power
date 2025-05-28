@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Define the options for the power menu with Font Awesome icons
+#options=" Shutdown\n Suspend\n Reboot\n Lock"
+#declare -a options=(
+#"Logout"
+#"Shutdown"
+#"Reboot"
+#"Lock"
+#)
+#
+#
+## Use dmenu to display the options and get the user's choice
+##choice=$(echo "$options" | fuzzel -d -f monospace:size=14 -w 11 -l 4 -a center)
+#choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -theme /home/ipws/.config/rofi/power.rasi -p 'System')
+#
+## Process the user's choice
+#case "$choice" in
+#    "Logout")
+#        # Logout the system
+#        hyprctl dispatch exit 0
+#        ;;
+#    "Shutdown")
+#        # Power off the system
+#        systemctl poweroff
+#        ;;
+#    "Reboot")
+#        # Suspend the system
+#        systemctl reboot
+#        ;;
+#    "Lock")
+#        # Lock the screen using swaylock (for SwayWM)
+#        /home/ipws/.config/hypr/scripts/lockscreen
+#        ;;
+#esac
+
+rofi -show power-menu -modi power-menu:rofi-power-menu -theme ~/.config/rofi/power.rasi

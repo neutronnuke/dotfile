@@ -1,0 +1,88 @@
+#!/bin/sh
+
+declare -a options=(
+"Single"
+"Mirror"
+"Dual L"
+"Dual R"
+"Laptop Off"
+"HDMI Off"
+)
+
+declare -a layoutl=(
+"2560"
+"1920"
+"1024"
+"800"
+)
+
+# Use dmenu to display the options and get the user's choice
+#choice=$(echo "$options" | fuzzel -d -f monospace:size=14 -w 11 -l 4 -a center)
+choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -theme /home/ipws/.config/rofi/monitor.rasi -p 'Display')
+
+# Process the user's choice
+case "$choice" in
+    "Single")
+        hyprctl keyword monitor eDP-1,1366x768,0x0,1
+        ;;
+    "Mirror")
+		hyprctl keyword monitor ,1024x768,auto,1,mirror,eDP-1
+        ;;
+    "[bk] Back Office Web")
+		firefox https://danginpurikauh.denpasarkota.go.id/backoffice
+        ;;
+    "[bi] Bibit")
+		firefox https://app.bibit.id/
+        ;;
+    "[fb] Facebook")
+		firefox https://www.facebook.com/
+        ;;
+    "[fs] Flamescomics")
+		firefox https://www.flamecomics.me
+        ;;
+    "[gm] Gmail")
+		firefox https://gmail.com
+        ;;
+    "[id] IDWS")
+		firefox https://forum.idws.id
+        ;;
+    "[img] Imgur")
+		firefox https://imgur.com
+        ;;
+    "[im] Immortal Update")
+		firefox https://mortalsgroove.com/
+        ;;
+    "[ig] Instagram")
+		firefox https://instagram.com
+        ;;
+    "[ls] Leviatanscans")
+		firefox https://lscomic.com/
+        ;;
+    "[ph] Pahe")
+		firefox https://pahe.ink
+        ;;
+    "[pt] Peta")
+		firefox https://petadesa.danginpurikauh.desa.id/admin-dpscty
+        ;;
+    "[rp] Reaperscans")
+		firefox https://reaperscans.com
+        ;;
+    "[rd] Reddit")
+		firefox https://reddit.com
+        ;;
+    "[rz] Rizzcomics")
+		firefox https://rizzfables.com/
+        ;;
+    "[wb] Website")
+		firefox https://danginpurikauh.desa.id
+        ;;
+    "[wa] Whatsapp")
+		firefox https://web.whatsapp.com/
+        ;;
+    "[x] X")
+		firefox https://x.com/
+        ;;
+    "[yt] Youtube")
+		firefox https://youtube.com/
+        ;;
+esac

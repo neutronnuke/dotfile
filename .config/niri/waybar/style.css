@@ -1,0 +1,180 @@
+@import "dracula.css";
+* {
+    border: none;
+    border-radius: 0;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 10px;
+	font-weight: bolder;
+    margin: 0px;
+    padding:0px;
+}
+
+window#waybar {
+    background: @base-darker;
+    border-radius: 0px 0px 0px 0px;
+}
+
+window#waybar.empty {
+    color: transparent;
+
+}
+
+tooltip {
+	background: @base-darker;
+  	border-width: 2px;
+	border-color: @comment;
+	border-style: solid;
+ 	border-radius: 0px 0px 0px 0px;
+}
+
+
+#workspaces{
+    margin-left: 0px;
+}
+
+#workspaces button {
+    color: @comment;
+    background:@base-darker;
+	/*padding-left: 2px;
+	padding-right: 2px;
+    border-radius: 0px;*/
+}
+
+#workspaces button:hover {
+    color: @orange;
+}
+
+#workspaces button.empty {
+    color: @selection;
+}
+
+#workspaces button.visible {
+    color: @pink;
+    background-color: transparent;
+}
+
+#workspaces button.active {
+    color: @purple;
+    background-color: transparent;
+}
+
+#workspaces button.focused {
+    color: @purple;
+    background-color: transparent;
+}
+
+#workspaces button.urgent {
+    color: @red;
+    background-color: @transparent;
+}
+
+#clock {
+    background: transparent;
+    color: @yellow;
+}
+
+#battery {
+    background: @base-darker;
+    color: @pink;
+}
+
+#battery.charging {
+    background: transparent;
+    color: @green;
+}
+
+#battery.warning:not(.charging) {
+    color: @yellow;
+}
+
+#battery.critical:not(.charging) {
+  	color: @red;
+}
+
+#cpu{
+    background: @base-darker;
+    color: @cyan;
+}
+
+#tray {
+    background: @base-darker;
+}
+
+#tray menu {
+    color: @foreground;
+    background: @base-darker;
+}
+
+#window {
+	color: @purple;
+	margin-left: 10px;
+	margin-right: 5px;
+}
+
+#/* make window module transparent when no windows present */
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+#pulseaudio {
+	color: @orange;
+    background: @base-darker;
+}
+
+#pulseaudio.muted {
+	color: @red;
+    background: @base-darker;
+}
+
+#memory {
+	color: @green;
+}
+
+#keyboard-state {
+  	color: @red;
+    background:@base-darker;
+}
+
+#keyboard-state > label.locked {
+  	color: @green;
+}
+
+#network {
+    color: @purple;
+    background:@base-darker;
+}
+
+#network.disconnected {
+    color: @red;
+    background:@base-darker;
+}
+
+#network.disabled {
+    color: @gray;
+    background:@base-darker;
+}
+
+#network.linked {
+    color: @comment;
+    background:@base-darker;
+}
+
+#custom-sep {
+    color: @base-darker;
+    background: @base-darker;
+}
+
+#taskbar {
+    background-color: @base-darker;
+}
+#taskbar button {
+    background-color: @base-darker;
+    padding-left:5px;
+}
+#taskbar button.active {
+    background-color: @base-darker;
+} 
+
+#taskbar button:hover{
+    background-color: @base-darker;
+}

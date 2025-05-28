@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+iDIR="$HOME/.config/hypr/dunst/icons"
+
+time=$(date +%Y-%m-%d-%H-%M-%S)
+dir="$HOME/Pictures/Screenshots"
+file="Screenshot_${time}_${RANDOM}.png"
+
+cd $dir && grimblast --notify save output "$file"
+
+

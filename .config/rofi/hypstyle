@@ -1,0 +1,62 @@
+#!/bin/sh
+
+dir="$HOME/.config/ipws"
+dirWay="$HOME/.config/ipws/waybar"
+dirDun="$HOME/.config/ipws/dunst"
+dirHyp="$HOME/.config/ipws/hypr"
+
+wayConf="$HOME/.config/hypr/waybar/config.jsonc"
+wayStyle="$HOME/.config/hypr/waybar/style.css"
+styleHyp="$HOME/.config/hypr/style.conf"
+dun="$HOME/.config/dunst/dunstrc"
+
+declare -a options=(
+"default"
+"minimal"
+"i3-gaps"
+"i3"
+"exit"
+)
+
+
+# Use dmenu to display the options and get the user's choice
+#choice=$(echo "$options" | fuzzel -d -f monospace:size=14 -w 11 -l 4 -a center)
+choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -theme /home/ipws/.config/rofi/hypstyle.rasi -p 'Hyprland Style:')
+
+
+# Process the user's choice
+case $choice in
+    default)
+		#hyprctl reload
+        echo "default" > ~/.config/ipws/state
+        ;;
+    minimal)
+		#hyprctl --batch "keyword general:gaps_out 0;keyword general:gaps_in 0;keyword decoration:rounding 0"
+        echo "minimal" > ~/.config/ipws/state
+        ;;
+    i3-gaps)
+		#hyprctl --batch "keyword general:gaps_out 5;keyword general:gaps_in 3;keyword decoration:rounding 0"
+        echo "i3-gaps" > ~/.config/ipws/state
+        ;;
+    i3)
+		#hyprctl --batch "keyword general:gaps_out 0;keyword general:gaps_in 0;keyword decoration:rounding 0"
+        echo "i3" > ~/.config/ipws/state
+       ;;
+    exit)
+        echo "No style selexted"
+        exit 
+        ;;
+esac
+
+
+cp $dirWay/$choice.jsonc $wayConf
+cp $dirWay/$choice.css $wayStyle
+cp $dirDun/$choice $dun
+cp $dirHyp/$choice.conf $styleHyp
+
+killall waybar && waybar --config $wayConf --style $wayStyle
+killall dunst
+while pgrep -u $UID -x dunst >/dev/null; do sleep 1; done
+pkill dunst
+notify-send "Style set"
+hyprctl reload

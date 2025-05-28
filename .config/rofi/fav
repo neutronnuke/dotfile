@@ -1,0 +1,37 @@
+#!/bin/sh
+
+declare -a options=(
+"Audacity"
+"Blender"
+"Compress PDF"
+"Etcher"
+"Font Forge"
+"Kdenlive"
+)
+
+
+# Use dmenu to display the options and get the user's choice
+#choice=$(echo "$options" | fuzzel -d -f monospace:size=14 -w 11 -l 4 -a center)
+choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -theme /home/ipws/.config/rofi/style.rasi -p 'Application')
+
+# Process the user's choice
+case "$choice" in
+    "Audacity")
+        /home/ipws/Documents/Source/AppImage/audacity
+        ;;
+    "Blender")
+		/home/ipws/Documents/Source/blender-3.6.5-linux-x64/blender
+        ;;
+    "Compress PDF")
+        /home/ipws/Documents/Source/AppImage/compress
+        ;;
+    "Etcher")
+        /home/ipws/Documents/Source/AppImage/etcher
+        ;;
+    "Font Forge")
+        /home/ipws/Documents/Source/AppImage/fontforge
+        ;;
+    "Kdenlive")
+        /home/ipws/Documents/Source/AppImage/kdenlive
+        ;;
+esac

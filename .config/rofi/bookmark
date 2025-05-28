@@ -1,0 +1,95 @@
+#!/bin/sh
+
+browser='firefox'
+
+declare -a options=(
+"[9g] 9gag"
+"[as] Asura Scan"
+"[bk] Back Office Web"
+"[bi] Bibit"
+"[fb] Facebook"
+"[fs] Flamescomics"
+"[gm] Gmail"
+"[id] IDWS"
+"[img] Imgur"
+"[ig] Instagram"
+"[ls] Leviatanscans"
+"[ph] Pahe"
+"[pt] Peta Desa"
+"[ni] Wiki Niri"
+"[rd] Reddit"
+"[rz] Rizzcomics"
+"[wb] Website"
+"[wa] Whatsapp"
+"[x] X"
+"[yt] Youtube"
+)
+
+
+# Use dmenu to display the options and get the user's choice
+#choice=$(echo "$options" | fuzzel -d -f monospace:size=14 -w 11 -l 4 -a center)
+choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -theme /home/ipws/.config/rofi/style.rasi -p 'Bookmark')
+#choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -p 'Bookmark' -matching fuzzy)
+# Process the user's choice
+case "$choice" in
+    "[9g] 9gag")
+        $browser https://www.9gag.com
+        ;;
+    "[as] Asura Scan")
+		firefox https://asuratoon.com
+        ;;
+    "[bk] Back Office Web")
+		firefox https://danginpurikauh.denpasarkota.go.id/backoffice
+        ;;
+    "[bi] Bibit")
+		firefox https://app.bibit.id/
+        ;;
+    "[fb] Facebook")
+		firefox https://www.facebook.com/
+        ;;
+    "[fs] Flamescomics")
+		firefox https://www.flamecomics.me
+        ;;
+    "[gm] Gmail")
+		firefox https://gmail.com
+        ;;
+    "[id] IDWS")
+		firefox https://forum.idws.id
+        ;;
+    "[img] Imgur")
+		firefox https://imgur.com
+        ;;
+    "[ig] Instagram")
+		firefox https://instagram.com
+        ;;
+    "[ls] Leviatanscans")
+		firefox https://lscomic.com/
+        ;;
+    "[ph] Pahe")
+		firefox https://pahe.ink
+        ;;
+    "[pt] Peta")
+		firefox https://petadesa.danginpurikauh.desa.id/admin-dpscty
+        ;;
+    "[ni] Wiki Niri")
+		firefox https://github.com/YaLTeR/niri/wiki/Getting-Started
+        ;;
+    "[rd] Reddit")
+		firefox https://reddit.com
+        ;;
+    "[rz] Rizzcomics")
+		firefox https://rizzfables.com/
+        ;;
+    "[wb] Website")
+		firefox https://danginpurikauh.desa.id
+        ;;
+    "[wa] Whatsapp")
+		firefox https://web.whatsapp.com/
+        ;;
+    "[x] X")
+		firefox https://x.com/
+        ;;
+    "[yt] Youtube")
+		firefox https://youtube.com/
+        ;;
+esac

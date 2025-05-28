@@ -1,0 +1,19 @@
+#!/bin/sh
+stateFile=$(cat ~/.config/ipws/state)
+
+dir="$HOME/.config/ipws"
+dirWay="$HOME/.config/ipws/waybar"
+dirDun="$HOME/.config/ipws/dunst"
+
+wayConf="$HOME/.config/hypr/waybar/config.jsonc"
+wayStyle="$HOME/.config/hypr/waybar/style.css"
+dun="$HOME/.config/dunst/dunstrc"
+
+cp $dirWay/default.jsonc $wayConf
+cp $dirWay/default.css $wayStyle
+cp $dirDun/default $dun
+
+waybar --config $wayConf --style $wayStyle
+pkill dunst
+while pgrep -u $UID -x dunst >/dev/null; do sleep 1; done
+pkill dunst

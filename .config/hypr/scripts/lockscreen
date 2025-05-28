@@ -1,0 +1,64 @@
+#!/bin/bash
+
+#image="$(grim '/tmp/lockscreenshot.png')"
+DIR=$HOME/Pictures/New
+PICS=($(ls ${DIR}))
+RANDOMPICS=${PICS[ $RANDOM % ${#PICS[@]} ]}
+image="${DIR}/${RANDOMPICS}"
+
+# Colors
+bg='282a36' bgl='313244' fg='f8f8f2'
+red='ff5555' green='50fa7b' yellow='f1fa8c'
+blue='6e5991' magenta='bd93f9' cyan='8be9fd'
+alpha='00000000'
+
+# CMD
+swaylock -f -i ${image} --scaling fill \
+	`# General` \
+	--ignore-empty-password \
+	--show-failed-attempts \
+	--hide-keyboard-layout \
+	--indicator-caps-lock \
+	`# Appearance - change CC to your desired transparency` \
+	--color ${bg}aa \
+	`#--image ${IMAGE} --scaling fill` \
+	--font 'JetBrainsMono Nerd Font' --font-size 30 \
+	`# Backspace Key` \
+	--key-hl-color ${green} \
+	--caps-lock-key-hl-color ${blue} \
+	--bs-hl-color ${red} \
+	--caps-lock-bs-hl-color ${red} \
+	`# Indicator` \
+	--indicator-radius 115 \
+	--indicator-thickness 10 \
+	`# Inside Circle Colors` \
+	--inside-color ${alpha} \
+	--inside-clear-color ${alpha} \
+	--inside-caps-lock-color ${alpha} \
+	--inside-ver-color ${blue} \
+	--inside-wrong-color ${red} \
+	`# Layout Colors` \
+	--layout-bg-color ${cyan} \
+	--layout-border-color ${cyan} \
+	--layout-text-color ${bg} \
+	`# Line Colors` \
+	--line-color ${bg} \
+	--line-clear-color ${red} \
+	--line-caps-lock-color ${bg} \
+	--line-ver-color ${bg} \
+	--line-wrong-color ${bg} \
+	`# Ring Colors` \
+	--ring-color ${magenta} \
+	--ring-clear-color ${bg} \
+	--ring-caps-lock-color ${magenta} \
+	--ring-ver-color ${blue} \
+	--ring-wrong-color ${red} \
+	`# Separator Color` \
+	--separator-color ${bg} \
+	`# Text Colors` \
+	--text-color ${fg} \
+	--text-clear-color ${fg} \
+	--text-caps-lock-color ${fg} \
+	--text-ver-color ${bg} \
+	--text-wrong-color ${bg} \
+	--indicator-caps-lock

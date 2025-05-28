@@ -1,0 +1,12 @@
+image=~/.config/swaylock/back.png
+scaling=fill
+
+inside-color=00000000
+ring-color=bd93f9
+line-uses-inside
+key-hl-color=50fa7b
+font=JetBrainsMono Nerd Font
+font-size=10
+indicator-radius=100
+
+inside-ver-color=50fa7b

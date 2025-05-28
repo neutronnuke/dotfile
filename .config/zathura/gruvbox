@@ -1,0 +1,57 @@
+set window-title-basename "true"
+set selection-clipboard "clipboard"
+set font "JetBrains Mono 10"
+
+# Dracula color theme for Zathura
+# Swaps Foreground for Background to get a light version if the user prefers
+
+#
+# Dracula color theme
+#
+
+set notification-error-bg       "#cc241d" # Red
+set notification-error-fg       "#ebdbb2" # Foreground
+set notification-warning-bg     "#d65d0e" # Orange
+set notification-warning-fg     "#282828" # Selection
+set notification-bg             "#458588" # Background
+set notification-fg             "#282828" # Foreground
+
+set completion-bg               "#b16286" # Background
+set completion-fg               "#282828" # Comment
+set completion-group-bg         "#b16286" # Background
+set completion-group-fg         "#282828" # Comment
+set completion-highlight-bg     "#8f3f71" # Selection
+set completion-highlight-fg     "#ebdbb2" # Foreground
+
+set index-bg                    "#282828" # Background
+set index-fg                    "#ebdbb2" # Foreground
+set index-active-bg             "#458588" # Current Line
+set index-active-fg             "#ebdbb2" # Foreground
+
+set inputbar-bg                 "#282828" # Background
+set inputbar-fg                 "#ebdbb2" # Foreground
+set statusbar-bg                "#282828" # Background
+set statusbar-fg                "#ebdbb2" # Foreground
+
+set highlight-color             "#d65d0e" # Orange
+set highlight-active-color      "#fe8019" # Pink
+
+set default-bg                  "#282828" # Background
+set default-fg                  "#ebdbb2" # Foreground
+
+set render-loading              true
+set render-loading-fg           "#282828" # Background
+set render-loading-bg           "#ebdbb2" # Foreground
+
+#
+# Recolor mode settings
+#
+
+set recolor-lightcolor          "#282828" # Background
+set recolor-darkcolor           "#ebdbb2" # Foreground
+
+#
+# Startup options
+#
+set adjust-open width
+set recolor true
