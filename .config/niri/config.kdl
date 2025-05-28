@@ -145,12 +145,12 @@ hotkey-overlay {
 animations {
     // off
     //slowdown 1.7
-    window-open {
+/-    window-open {
         //duration-ms 300
         //curve "ease-out-cubic"
         spring damping-ratio=0.5 stiffness=700 epsilon=0.0001
     }
-    window-close {
+/-    window-close {
         //duration-ms 300
         //curve "ease-out-cubic"
         spring damping-ratio=0.5 stiffness=700 epsilon=0.0001
@@ -158,13 +158,13 @@ animations {
 /-    horizontal-view-movement {
         spring damping-ratio=0.5 stiffness=700 epsilon=0.0001
     }
-    window-movement {
+/-    window-movement {
         spring damping-ratio=0.5 stiffness=700 epsilon=0.0001
     }
-    window-resize {
+/-    window-resize {
         spring damping-ratio=0.5 stiffness=700 epsilon=0.0001
     }
-    /-workspace-switch {
+/-    workspace-switch {
         spring damping-ratio=0.5 stiffness=700 epsilon=0.0001
     }
 /-    config-notification-open-close {
@@ -196,6 +196,7 @@ binds {
 	Mod+F3 { spawn "nautilus";}
 	Mod+F4 { spawn "gimp"; }
 	Mod+F5 { spawn "inkscape"; }
+	Mod+F6 { spawn "/home/ipws/Documents/Source/KDenlive/AppRun"; }
 	
 	Mod+F10 { spawn "/home/ipws/.config/niri/scripts/volume" "--dec"; }
 	Mod+F11 { spawn "/home/ipws/.config/niri/scripts/volume" "--inc"; }
