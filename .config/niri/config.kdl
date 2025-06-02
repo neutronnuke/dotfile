@@ -70,6 +70,7 @@ environment {
 prefer-no-csd
 
 layout {
+    background-color "transparent"
 	gaps 5
     //empty-workspace-above-first
     //default-column-display "tabbed"
@@ -133,11 +134,13 @@ layout {
 	
     /-insert-hint {
         // off
-        color "#ffc87f80"
+        color "#1e1f29"
         // gradient from="#ffbb6680" to="#ffc88080" angle=45 relative-to="workspace-view"
     }
 }
-
+overview {
+    backdrop-color "#1e1f29"
+}
 hotkey-overlay {
 	skip-at-startup
 }
@@ -209,12 +212,13 @@ binds {
 	//Mod+Shift+F { expand-column-to-available-width; }
 	Mod+Q { close-window; }
 	Mod+C { center-column; }
-	
+	Mod+V { toggle-overview; }
 	Print { screenshot-screen; }
 	Ctrl+Alt+P { screenshot-screen; }
     Ctrl+Print { screenshot; }
     Alt+Print { screenshot-window; }
     
+    Ctrl+Space { spawn "dunstctl" "close"; }
     Alt+Tab { switch-focus-between-floating-and-tiling; }
     Mod+Space { toggle-window-floating; }
     
@@ -335,6 +339,7 @@ window-rule {
 	//    active-color "#bd93f9"
 	//    inactive-color "#44475a"
 	//}
+    //open-maximized true
 }
 
 window-rule {
@@ -356,7 +361,7 @@ window-rule {
 
 window-rule {
      match app-id="firefox$" title="^Picture-in-Picture$"
-     match app-id="^mpv$"
+    // match app-id="^mpv$"
      match app-id="^galculator$"
      match app-id="^qalculate-gtk$"
      match title="File Operation Progress"
@@ -372,4 +377,40 @@ window-rule {
 /-window-rule {
      match app-id="kitty"
      default-column-width {}
+}
+
+layer-rule {
+    // This is for swaybg; change for other wallpaper tools.
+    // Find the right namespace by running niri msg layers.
+    // match namespace="^wallpaper$"
+    // place-within-backdrop true
+    match namespace="^rofi$"
+    match namespace="^notifications$"
+    baba-is-float true
+    shadow {
+        //on
+    }
+}
+
+/- layer-rule {
+    match namespace="waybar"
+    match at-startup=true
+
+    // Properties that apply continuously.
+    //opacity 0.5
+    block-out-from "screencast"
+    // block-out-from "screen-capture"
+
+    shadow {
+        on
+        // off
+        softness 40
+        spread 5
+        offset x=0 y=5
+        draw-behind-window true
+        color "#00000064"
+        // inactive-color "#00000064"
+    }
+
+    place-within-backdrop true
 }
