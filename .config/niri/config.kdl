@@ -14,18 +14,22 @@ output "eDP-1" {
     //position x=2560 y=0
     position x=0 y=0
     //position x=800 y=0
-    background-color "#000000"
+    background-color "transparent"
+    backdrop-color "transparent"
+    focus-at-startup
 }
 
 output "HDMI-A-1" {
-    //off
+    off
     //mode "2560x1080@59.978"
-    //mode "2560x1080@100.00"
+    mode "2560x1080@100.00"
     //mode "1920x1080"
-    mode "800x600"
+    //mode "800x600"
     //position x=0 y=0
     position x=1366 y=0
-    background-color "#000000"
+    background-color "transparent"
+    backdrop-color "transparent"
+    //scale 2.0
 }
 
 
@@ -75,8 +79,8 @@ layout {
     //empty-workspace-above-first
     //default-column-display "tabbed"
     struts {
-        left 10
-        right 10
+        left 5
+        right 5
         top 0
         bottom 0
     }
@@ -97,14 +101,14 @@ layout {
 	}
 	
     shadow {
-        //off
-        softness 10
+        on
+        softness 30
         spread 3
         offset x=0 y=0
         draw-behind-window true
     }
     
-    /-preset-column-widths {
+    preset-column-widths {
         proportion 0.3333333333333333
         proportion 0.5
         proportion 0.66667
@@ -112,7 +116,7 @@ layout {
         // fixed 1000
     }
 
-    //default-column-width { proportion 0.5; }
+    default-column-width { proportion 0.5; }
 
    /-preset-window-heights {
         proportion 0.33333
@@ -222,18 +226,18 @@ binds {
 
 	Mod+M { maximize-column; }
 	Mod+F { fullscreen-window; }
-	//Mod+Shift+F { expand-column-to-available-width; }
+	Mod+Shift+F { expand-column-to-available-width; }
 	Mod+Q { close-window; }
 	Mod+C { center-column; }
-	Mod+V { toggle-overview; }
 	Print { screenshot-screen; }
 	Ctrl+Alt+P { screenshot-screen; }
     Ctrl+Print { screenshot; }
     Alt+Print { screenshot-window; }
-    
+    Alt+Tab repeat=false { toggle-overview; }
+
     Ctrl+Space { spawn "dunstctl" "close"; }
-    Alt+Tab { switch-focus-between-floating-and-tiling; }
     Mod+Space { toggle-window-floating; }
+    Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
     
 	Mod+D { spawn "rofi" "-show" "drun" "-theme" "/home/ipws/.config/rofi/style.rasi"; }
 	Mod+B { spawn "/home/ipws/.config/rofi/bookmark"; }
@@ -346,13 +350,9 @@ binds {
 
 
 window-rule {
-	geometry-corner-radius 0 0 0 0
+	geometry-corner-radius 0
 	clip-to-geometry true
-	//tab-indicator {
-	//    active-color "#bd93f9"
-	//    inactive-color "#44475a"
-	//}
-    //open-maximized true
+    draw-border-with-background false
 }
 
 window-rule {
@@ -392,17 +392,17 @@ window-rule {
      default-column-width {}
 }
 
-/- layer-rule {
+ layer-rule {
     // This is for swaybg; change for other wallpaper tools.
     // Find the right namespace by running niri msg layers.
-    // match namespace="^wallpaper$"
-    // place-within-backdrop true
-    match namespace="^rofi$"
-    match namespace="^notifications$"
-    baba-is-float true
-    shadow {
+     match namespace="^wallpaper$"
+     place-within-backdrop true
+    //match namespace="^rofi$"
+    //match namespace="^notifications$"
+    //baba-is-float true
+    //shadow {
         //on
-    }
+    //}
 }
 
 /- layer-rule {
